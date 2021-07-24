@@ -36,7 +36,7 @@ export default class QuestionModel {
         return this.#isAnswered
     }
 
-    get Answered() {
+    get answered() {
         for (let answer of this.#answers) {
             if (answer.isAnswerShow) {
                 return true
@@ -45,8 +45,19 @@ export default class QuestionModel {
         return false
     }
 
-    toSortAnswers(){
-        let  sortAnswers = questionSort(this.#answers)
+    answerWith(index: number): QuestionModel {
+        const rightAnswer = this.#answers[index]?.isAnswerRight
+        const answered = this.#answers.map((answer, i) => {
+            const answerSelected = index === i
+            const isShowAnswer = answerSelected || answer.isAnswerRight
+            return isShowAnswer ? answer.show()
+                : answer
+        })
+        return new QuestionModel(this.id, this.enunciate, answered, rightAnswer)
+    }
+
+    toSortAnswers() {
+        let sortAnswers = questionSort(this.#answers)
         return new QuestionModel(this.#id, this.#enunciate, sortAnswers, this.#isRight)
     }
 

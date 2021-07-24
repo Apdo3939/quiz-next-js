@@ -29,6 +29,10 @@ export default class AnswerModel {
         return this.#isAnswerShow
     }
 
+    show(){
+        return new AnswerModel(this.#valueAnswer, this.#isAnswerRight, true)
+    }
+
     toObject(){
         return{
             valueAnswer : this.#valueAnswer,

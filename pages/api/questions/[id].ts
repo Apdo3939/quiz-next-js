@@ -5,7 +5,8 @@ export default function handler(req, res) {
     const questionSelection = questions.filter(q => q.id === id)
     if (questionSelection.length === 1) {
         const questionSelected = questionSelection[0].toSortAnswers()
-        res.status(200).json(questionSelected.toObject())
+        const obj = questionSelected.toObject()
+        res.status(200).json(obj)
     }
     else {
         res.status(204).send()
