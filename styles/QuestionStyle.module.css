@@ -2,49 +2,86 @@
 .questionContainer {
     display        : flex;
     flex-direction : column;
-    padding        : 24px;
+    padding        : 1.5rem;
     align-items    : center;
     justify-content: center;
 }
 
 /*Enunciate*/
 .enunciateContainer {
-    display: flex;
+    display       : flex;
     flex-direction: row;
+    margin-bottom: 3rem;
 }
 
 .enunciateText {
-    font-size  : 22px;
+    font-size  : 1.5rem;
     font-weight: 500;
     color      : rgb(188, 218, 188);
 }
 
 /*Answer*/
 .answerContainer {
-    display        : flex;
-    flex-direction : column;
-    align-items    : center;
-    justify-content: space-around;
+    display: flex;
+    min-width: 30rem;
+    width: 80%;
+    height: 4rem;
+    margin: 0.5rem;
+    border-radius: 0.5rem;
 }
 
 .answerContent {
-    display: inline;
+    position: relative;
+    display: flex;
+    flex: 1;
+    
 }
 
-.answerFront {
+.answerContentFront, .answerContentBack  {
+    position: absolute;
+    display: flex;
+    height: 100%;
+    width: 100%;
+}
+
+.answerContentFront{
+    align-items: center;
+    border-radius: 0.5rem;
+    padding: 1rem;
+    color:forestgreen;
+    background-color: aliceblue;
+}
+
+.answerTextFront {
+    display         : flex;
+    align-items     : center;
+    justify-content : center;
+    height          : 2.5rem;
+    width           : 2.5rem;
+    border-radius   : 1.25rem;
+    margin          : 0.5rem;
     background-color: burlywood;
 }
 
-.answerBack {
-    background-color: forestgreen;
+.answerValueFront {
+    display         : flex;
+    align-items     : center;
+    height          : 2.5rem;
+    width           : 15rem;
+    border-radius   : 0.5rem;
+    margin          : 0.5rem;
+    
 }
 
 .answerText {
-    font-size  : 16px;
-    font-weight: 400;
+    font-size  : 1.3rem;
+    font-weight: 700;
 }
 
 .answerTextValue {
-    font-size  : 16px;
-    font-weight: 400;
+    font-size  : 1.3rem;
+    font-weight: 700;
 }
+
+
+

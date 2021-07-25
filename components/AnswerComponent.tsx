@@ -15,12 +15,25 @@ export default function AnswerComponent(props: AnswerComponentProps) {
     return (
         <div className={styles.answerContainer}>
             <div className={styles.answerContent}>
-                <div className={styles.answerFront}>
-                    <div className={styles.answerText}>{props.textAnswer}</div>
+                <div className={styles.answerContentFront}>
+                    <div className={styles.answerTextFront}>
+                        <div className={styles.answerText}>{props.textAnswer}</div>
+                    </div>
+                    <div className={styles.answerValueFront}>
+                        <div className={styles.answerTextValue}>{answer.valueAnswer}</div>
+                    </div>
                 </div>
-                <div className={styles.answerBack}>
-                    <div className={styles.answerTextValue}>{answer.valueAnswer}</div>
-                </div>
+
+                {answer.isAnswerShow &&
+                    <div className={styles.answerContentBack}>
+                        <div className={styles.answerBack}>
+                            <div className={styles.answerText}>{props.textAnswer}</div>
+                        </div>
+                        <div className={styles.answerBack}>
+                            <div className={styles.answerTextValue}>{answer.valueAnswer}</div>
+                        </div>
+                    </div>
+                }
             </div>
         </div>
     )
