@@ -1,0 +1,50 @@
+/*Question*/
+.questionContainer {
+    display        : flex;
+    flex-direction : column;
+    padding        : 24px;
+    align-items    : center;
+    justify-content: center;
+}
+
+/*Enunciate*/
+.enunciateContainer {
+    display: flex;
+    flex-direction: row;
+}
+
+.enunciateText {
+    font-size  : 22px;
+    font-weight: 500;
+    color      : rgb(188, 218, 188);
+}
+
+/*Answer*/
+.answerContainer {
+    display        : flex;
+    flex-direction : column;
+    align-items    : center;
+    justify-content: space-around;
+}
+
+.answerContent {
+    display: inline;
+}
+
+.answerFront {
+    background-color: burlywood;
+}
+
+.answerBack {
+    background-color: forestgreen;
+}
+
+.answerText {
+    font-size  : 16px;
+    font-weight: 400;
+}
+
+.answerTextValue {
+    font-size  : 16px;
+    font-weight: 400;
+}
