@@ -2,6 +2,7 @@ import styles from '../styles/QuestionStyle.module.css'
 import QuestionModel from '../model/questionModel'
 import EnunciateComponent from './EnunciateComponent'
 import AnswerComponent from './AnswerComponent'
+import TimerComponents from './TimerComponents'
 
 const textLetter = [
     { valueLetter: 'A', cor: '#F2C866' },
@@ -13,7 +14,9 @@ const textLetter = [
 
 interface QuestionComponentProps {
     value: QuestionModel
+    duration?: number
     onResponse : (index: number) => void
+    timeOver: () => void
 }
 
 export default function QuestionComponent(props: QuestionComponentProps) {
@@ -37,6 +40,7 @@ export default function QuestionComponent(props: QuestionComponentProps) {
             <h1>Questão: {question.id}</h1>
             <EnunciateComponent textEnunciate={question.enunciate} />
             {renderAnswers()}
+            <TimerComponents duration={ props.duration ?? 10} timeOver={props.timeOver} />
         </div>
     )
 }
