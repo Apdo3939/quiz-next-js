@@ -3,6 +3,7 @@ import QuestionComponent from "../components/QuestionComponents";
 import QuestionModel from '../model/questionModel';
 import AnswerModel from '../model/AnswerModel';
 import { useEffect, useRef, useState } from 'react';
+import ButtonComponent from '../components/ButtonComponent';
 
 
 const questionMock = new QuestionModel(1, 'Qual é o nome do segundo planeta do sistema solar?', [
@@ -38,6 +39,7 @@ export default function Home() {
         value={question}
         onResponse={onResponse}
         timeOver={onTimeOver} />
+        <ButtonComponent title={'Próxima'} />
     </div>
   )
 }
