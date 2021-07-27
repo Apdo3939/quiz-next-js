@@ -4,6 +4,7 @@ import QuestionModel from '../model/questionModel';
 import AnswerModel from '../model/AnswerModel';
 import { useEffect, useRef, useState } from 'react';
 import ButtonComponent from '../components/ButtonComponent';
+import AllQuestionsComponent from '../components/AllQuestionsComponent';
 
 
 const questionMock = new QuestionModel(1, 'Qual é o nome do segundo planeta do sistema solar?', [
@@ -30,16 +31,23 @@ export default function Home() {
     }
   }
 
+  function questionAnswered() {
+    
+  }
+
+  function timeIsOver() {
+    
+  }
+
   useEffect(() => { questionRef.current = question }, [question])
 
   return (
     <div className={styles.homeContainer} >
-      <QuestionComponent
-        duration={20}
-        value={question}
-        onResponse={onResponse}
-        timeOver={onTimeOver} />
-      <ButtonComponent title={'Próxima'} href='/result' />
+      <AllQuestionsComponent
+        lastQuestion={true}
+        question={question}
+        questionAnswered={questionAnswered}
+        timeIsOver={timeIsOver} />
     </div>
   )
 }

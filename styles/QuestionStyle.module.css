@@ -118,3 +118,10 @@
     border-radius: 1.25rem;
     margin: 0.5rem;
 }
+
+.allQuestions{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

@@ -16,8 +16,9 @@
     border: none;
     border-radius: 0.5rem;
     cursor: pointer;
+    transition: all .2s ease-in-out;
 }
 
 .buttonContainer:hover {
-    background-color: '#6246d0'
+    transform: scale(1.2);
 }
