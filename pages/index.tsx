@@ -30,7 +30,7 @@ export default function Home() {
     }
   }
 
-  useEffect(()=>{questionRef.current = question}, [question])
+  useEffect(() => { questionRef.current = question }, [question])
 
   return (
     <div className={styles.homeContainer} >
@@ -39,7 +39,7 @@ export default function Home() {
         value={question}
         onResponse={onResponse}
         timeOver={onTimeOver} />
-        <ButtonComponent title={'Próxima'} />
+      <ButtonComponent title={'Próxima'} href='/result' />
     </div>
   )
 }
