@@ -1,26 +1,18 @@
 import styles from '../styles/Home.module.css'
 import QuestionModel from '../model/questionModel';
-import AnswerModel from '../model/AnswerModel';
 import { useEffect, useState } from 'react';
 import AllQuestionsComponent from '../components/AllQuestionsComponent';
-
-
-const questionMock = new QuestionModel(1, 'Qual é o nome do segundo planeta do sistema solar?', [
-  AnswerModel.rightAnswer('Venus'),
-  AnswerModel.wrongAnswer('Terra'),
-  AnswerModel.wrongAnswer('Marte'),
-  AnswerModel.wrongAnswer('Mercúrio'),
-  AnswerModel.wrongAnswer('Jupiter'),
-])
+import { useRouter } from 'next/router';
 
 const BASE_URL = 'http://localhost:3000/api'
 
 export default function Home() {
 
-  const [question, setQuestion] = useState(questionMock)
+  const router = useRouter()
+  const [question, setQuestion] = useState<QuestionModel>()
   const [questionsId, setQuestionsId] = useState<number[]>([])
   const [questionsRight, setQuestionsRight] = useState<number>(0)
-  
+
 
   async function loadQuestionsId() {
     const res = await fetch(`${BASE_URL}/questionsId`)
@@ -41,10 +33,29 @@ export default function Home() {
     setQuestionsRight(questionsRight + (right ? 1 : 0))
   }
 
-  function timeIsOver() {
-    console.log("terminou o tempo")
+  function nextQuestionId() {
+    const nextId = questionsId.indexOf(question.id) + 1
+    return questionsId[nextId]
   }
 
+  function timeIsOver() {
+    const nextId = nextQuestionId()
+    nextId ? nextQuestionPage(nextId) : finished()
+  }
+
+  function nextQuestionPage(nextId: number) {
+    loadQuestion(questionsId[nextId])
+  }
+
+  function finished() {
+    router.push({
+      pathname: '/result',
+      query: {
+        total: questionsId.length,
+        right: questionsRight
+      }
+    })
+  }
 
   useEffect(() => { loadQuestionsId() }, [])
 
@@ -53,13 +64,11 @@ export default function Home() {
   }, [questionsId])
 
 
-  return (
-    <div className={styles.homeContainer} >
-      <AllQuestionsComponent
-        question={question}
-        lastQuestion={false}
-        questionAnswered={questionAnswered}
-        timeIsOver={timeIsOver} />
-    </div>
-  )
+  return question ? (
+    <AllQuestionsComponent
+      question={question}
+      lastQuestion={nextQuestionId() === undefined}
+      questionAnswered={questionAnswered}
+      timeIsOver={timeIsOver} />
+  ) : false
 }

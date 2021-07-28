@@ -2,6 +2,7 @@ import { CountdownCircleTimer } from 'react-countdown-circle-timer'
 import styles from '../styles/TimerComponents.module.css'
 
 interface TimerComponentsProps {
+    key: any
     duration: number
     timeOver: () => void
 }

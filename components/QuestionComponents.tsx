@@ -26,7 +26,7 @@ export default function QuestionComponent(props: QuestionComponentProps) {
     function renderAnswers() {
         return question.answers.map((answer, i) => {
             return <AnswerComponent
-                key={i}
+                key={`${question.id}-${i}`}
                 value={answer}
                 index={i}
                 textAnswer={textLetter[i].valueLetter}
@@ -37,8 +37,13 @@ export default function QuestionComponent(props: QuestionComponentProps) {
 
     return (
         <div className={styles.questionContainer}>
-            <EnunciateComponent textEnunciate={question.enunciate} />
-            <TimerComponents duration={props.duration ?? 10} timeOver={props.timeOver} />
+            <EnunciateComponent
+                index={question.id}
+                textEnunciate={question.enunciate} />
+            <TimerComponents
+                key={question.id}
+                duration={props.duration ?? 10}
+                timeOver={props.timeOver} />
             {renderAnswers()}
         </div>
     )
