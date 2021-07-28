@@ -29,6 +29,10 @@ export default class AnswerModel {
         return this.#isAnswerShow
     }
 
+    static createObj(obj: AnswerModel): AnswerModel {
+        return new AnswerModel(obj.valueAnswer, obj.isAnswerRight, obj.isAnswerShow)
+    }
+
     show(){
         return new AnswerModel(this.#valueAnswer, this.#isAnswerRight, true)
     }

@@ -1,9 +1,7 @@
 import styles from '../styles/Home.module.css'
-import QuestionComponent from "../components/QuestionComponents";
 import QuestionModel from '../model/questionModel';
 import AnswerModel from '../model/AnswerModel';
-import { useEffect, useRef, useState } from 'react';
-import ButtonComponent from '../components/ButtonComponent';
+import { useEffect, useState } from 'react';
 import AllQuestionsComponent from '../components/AllQuestionsComponent';
 
 
@@ -15,31 +13,53 @@ const questionMock = new QuestionModel(1, 'Qual é o nome do segundo planeta do 
   AnswerModel.wrongAnswer('Jupiter'),
 ])
 
+const BASE_URL = 'http://localhost:3000/api'
 
 export default function Home() {
 
   const [question, setQuestion] = useState(questionMock)
-  const questionRef = useRef<QuestionModel>()
+  const [questionsId, setQuestionsId] = useState<number[]>([])
+  //const questionRef = useRef<QuestionModel>()
 
-  function onResponse(index: number) {
-    setQuestion(question.answerWith(index))
+  async function loadQuestionsId() {
+    const res = await fetch(`${BASE_URL}/questionsId`)
+    const questionsId = await res.json()
+    console.log(questionsId)
+    setQuestionsId(questionsId)
   }
 
+  async function loadQuestion(id: number) {
+    const res = await fetch(`${BASE_URL}/questions/${id}`)
+    const json = await res.json()
+    const newQuestion = QuestionModel.createObj(json)
+    setQuestion(newQuestion)
+  }
+
+  /*function onResponse(index: number) {
+    setQuestion(question.answerWith(index))
+  }
   function onTimeOver() {
     if (!questionRef.current.isAnswered) {
       setQuestion(questionRef.current.answerWith(-1))
     }
   }
+  useEffect(() => { questionRef.current = question }, [question])*/
 
   function questionAnswered() {
-    
+
   }
 
   function timeIsOver() {
-    
+
   }
 
-  useEffect(() => { questionRef.current = question }, [question])
+
+  useEffect(() => { loadQuestionsId() }, [])
+
+  useEffect(() => {
+    questionsId.length > 0 && loadQuestion(questionsId[0])
+  }, [questionsId])
+
 
   return (
     <div className={styles.homeContainer} >

@@ -45,6 +45,11 @@ export default class QuestionModel {
         return false
     }
 
+    static createObj(obj: QuestionModel): QuestionModel {
+        const answers = obj.answers.map(answer => AnswerModel.createObj(answer))
+        return new QuestionModel(obj.id, obj.enunciate, answers, obj.isRight)
+    }
+
     answerWith(index: number): QuestionModel {
         const rightAnswer = this.#answers[index]?.isAnswerRight
         const answered = this.#answers.map((answer, i) => {
