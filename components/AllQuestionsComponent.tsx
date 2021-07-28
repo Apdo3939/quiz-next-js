@@ -13,7 +13,7 @@ interface AllQuestionsComponentProps {
 export default function AllQuestionsComponent(props: AllQuestionsComponentProps) {
 
     function onResponse(index: number) {
-        if(props.question.isAnswered){
+        if(props.question.noAnswered){
             props.questionAnswered(props.question.answerWith(index))
         }
     }

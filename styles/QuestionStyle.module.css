@@ -63,7 +63,6 @@
     background-color: #2BAA6D;
     display: flex;
     align-items: center;
-    justify-content: center;
     height: 4rem;
     width: 15rem;
     border-radius: 0.5rem;
@@ -107,6 +106,11 @@
     height: 2.5rem;
     width: 2.5rem;
     border-radius: 1.25rem;
+}
+
+.answerTextBack{
+    font-size: 1.3rem;
+    font-weight: 700;
 }
 
 .answerTextValue {

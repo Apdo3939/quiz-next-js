@@ -6,14 +6,12 @@ export default class QuestionModel {
     #enunciate: string
     #answers: AnswerModel[]
     #isRight: boolean
-    #isAnswered: boolean
 
-    constructor(id: number, enunciate: string, answers: AnswerModel[], isRight = false, isAnswered = false) {
+    constructor(id: number, enunciate: string, answers: AnswerModel[], isRight = false) {
         this.#id = id
         this.#enunciate = enunciate
         this.#answers = answers
         this.#isRight = isRight
-        this.#isAnswered = isAnswered
     }
 
     get id() {
@@ -32,8 +30,8 @@ export default class QuestionModel {
         return this.#isRight
     }
 
-    get isAnswered() {
-        return this.#isAnswered
+    get noAnswered() {
+        return !this.answered
     }
 
     get answered() {

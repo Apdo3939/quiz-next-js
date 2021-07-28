@@ -37,7 +37,6 @@ export default function QuestionComponent(props: QuestionComponentProps) {
 
     return (
         <div className={styles.questionContainer}>
-            <h1>Questão: {question.id}</h1>
             <EnunciateComponent textEnunciate={question.enunciate} />
             <TimerComponents duration={props.duration ?? 10} timeOver={props.timeOver} />
             {renderAnswers()}

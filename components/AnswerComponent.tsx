@@ -34,13 +34,12 @@ export default function AnswerComponent(props: AnswerComponentProps) {
                         <div className={styles.answerContentBack}>
                             {answer.isAnswerRight ?
                                 (<div className={styles.answerContentBackRight}>
-                                    <div >A resposta esta correta...</div>
-                                    <div className={styles.answerText}>{answer.valueAnswer}</div>
+                                    <div className={styles.answerTextBack}>
+                                        Correta. {answer.valueAnswer}</div>
                                 </div>)
                                 :
                                 (<div className={styles.answerContentBackWrong}>
-                                    <div >A resposta esta errada... </div>
-                                    <div className={styles.answerText} >{answer.valueAnswer}</div>
+                                    <div className={styles.answerTextBack} >Errada. {answer.valueAnswer}</div>
                                 </div>)}
                         </div>
                     )

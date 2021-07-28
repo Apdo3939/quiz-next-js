@@ -19,12 +19,12 @@ export default function Home() {
 
   const [question, setQuestion] = useState(questionMock)
   const [questionsId, setQuestionsId] = useState<number[]>([])
-  //const questionRef = useRef<QuestionModel>()
+  const [questionsRight, setQuestionsRight] = useState<number>(0)
+  
 
   async function loadQuestionsId() {
     const res = await fetch(`${BASE_URL}/questionsId`)
     const questionsId = await res.json()
-    console.log(questionsId)
     setQuestionsId(questionsId)
   }
 
@@ -35,22 +35,14 @@ export default function Home() {
     setQuestion(newQuestion)
   }
 
-  /*function onResponse(index: number) {
-    setQuestion(question.answerWith(index))
-  }
-  function onTimeOver() {
-    if (!questionRef.current.isAnswered) {
-      setQuestion(questionRef.current.answerWith(-1))
-    }
-  }
-  useEffect(() => { questionRef.current = question }, [question])*/
-
-  function questionAnswered() {
-
+  function questionAnswered(answered: QuestionModel) {
+    setQuestion(answered)
+    const right = answered.isRight
+    setQuestionsRight(questionsRight + (right ? 1 : 0))
   }
 
   function timeIsOver() {
-
+    console.log("terminou o tempo")
   }
 
 
@@ -64,8 +56,8 @@ export default function Home() {
   return (
     <div className={styles.homeContainer} >
       <AllQuestionsComponent
-        lastQuestion={true}
         question={question}
+        lastQuestion={false}
         questionAnswered={questionAnswered}
         timeIsOver={timeIsOver} />
     </div>
