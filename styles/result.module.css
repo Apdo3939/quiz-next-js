@@ -1,5 +1,42 @@
-.resultContainer{
+.resultContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+.resultContent{
     display: flex;
     align-items: center;
     justify-content: center;
+    margin: 2rem;
+}
+
+.resultTitle{
+    font-size: 4rem;
+}
+
+.statisticsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 1rem;
+}
+
+.statisticsContentValue{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10rem;
+    width: 10rem;
+    border-radius: 5rem;
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.statisticsContentText{
+    color: aliceblue;
+    font-size: 1.3rem ;
+    margin-top: 1rem;
 }

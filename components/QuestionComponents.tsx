@@ -38,7 +38,6 @@ export default function QuestionComponent(props: QuestionComponentProps) {
     return (
         <div className={styles.questionContainer}>
             <EnunciateComponent
-                index={question.id}
                 textEnunciate={question.enunciate} />
             <TimerComponents
                 key={question.id}

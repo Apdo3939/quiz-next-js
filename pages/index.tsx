@@ -1,4 +1,3 @@
-import styles from '../styles/Home.module.css'
 import QuestionModel from '../model/questionModel';
 import { useEffect, useState } from 'react';
 import AllQuestionsComponent from '../components/AllQuestionsComponent';
