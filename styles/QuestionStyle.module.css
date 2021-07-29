@@ -29,13 +29,19 @@
     margin: 0.5rem;
     border-radius: 0.5rem;
     cursor: pointer;
+    perspective: 1000;
 }
 
 .answerContent {
     position: relative;
     display: flex;
     flex: 1;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
 
+.answerContent.answerShow{
+    transform: rotateY(180deg);
 }
 
 .answerContentFront,
@@ -44,6 +50,8 @@
     display: flex;
     height: 100%;
     width: 100%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
 }
 
 .answerContentBack>div {
@@ -52,6 +60,10 @@
     flex: 1;
     justify-content: center;
     align-items: center;
+}
+
+.answerContentBack{
+    transform: rotateY(180deg);
 }
 
 .answerBack {

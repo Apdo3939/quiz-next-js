@@ -3,18 +3,22 @@ export default class AnswerModel {
     #isAnswerRight: boolean
     #isAnswerShow: boolean
 
-    constructor(valueAnswer: string, isAnswerRight: boolean, isAnswerShow = false) {
+    constructor(valueAnswer: string, isAnswerRight: boolean, isAnswerShow: boolean) {
         this.#valueAnswer = valueAnswer
         this.#isAnswerRight = isAnswerRight
         this.#isAnswerShow = isAnswerShow
     }
 
-    static rightAnswer(valueAnswer: string){
-        return new AnswerModel(valueAnswer, true)
+    static rightAnswer(valueAnswer: string) {
+        return new AnswerModel(valueAnswer, true, false)
     }
 
-    static wrongAnswer(valueAnswer: string){
-        return new AnswerModel(valueAnswer, false)
+    static wrongAnswer(valueAnswer: string) {
+        return new AnswerModel(valueAnswer, false, false)
+    }
+
+    static createObj(obj: AnswerModel): AnswerModel {
+        return new AnswerModel(obj.valueAnswer, obj.isAnswerRight, obj.isAnswerShow)
     }
 
     get valueAnswer() {
@@ -29,19 +33,15 @@ export default class AnswerModel {
         return this.#isAnswerShow
     }
 
-    static createObj(obj: AnswerModel): AnswerModel {
-        return new AnswerModel(obj.valueAnswer, obj.isAnswerRight, obj.isAnswerShow)
+    show() {
+        return new AnswerModel(this.valueAnswer, this.isAnswerRight, true)
     }
 
-    show(){
-        return new AnswerModel(this.#valueAnswer, this.#isAnswerRight, true)
-    }
-
-    toObject(){
-        return{
-            valueAnswer : this.#valueAnswer,
-            isAnswerRight : this.#isAnswerRight,
-            isAnswerShow : this.#isAnswerShow
+    toObject() {
+        return {
+            valueAnswer: this.#valueAnswer,
+            isAnswerRight: this.#isAnswerRight,
+            isAnswerShow: this.#isAnswerShow
         }
     }
 
