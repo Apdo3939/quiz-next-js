@@ -21,6 +21,7 @@ export default function Home() {
 
   async function loadQuestion(id: number) {
     const res = await fetch(`${BASE_URL}/questions/${id}`)
+    console.log(id)
     const json = await res.json()
     const newQuestion = QuestionModel.createObj(json)
     setQuestion(newQuestion)

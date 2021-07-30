@@ -10,7 +10,7 @@ export default function result() {
     const router = useRouter()
     const total = +router.query.total
     const right = +router.query.right
-    const percent = Math.round(right / total * 100)
+    const percent = Math.round((right / total) * 100)
 
     return (
         <div className={styles.resultContainer}>

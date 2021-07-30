@@ -68,8 +68,9 @@ export default class QuestionModel {
         return {
             id: this.#id,
             enunciate: this.#enunciate,
-            answers: this.#answers.map(a => a.toObject()),
+            answered: this.answered,
             isRight: this.#isRight,
+            answers: this.#answers.map(a => a.toObject()),
         }
     }
 }
